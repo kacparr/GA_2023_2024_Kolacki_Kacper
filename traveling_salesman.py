@@ -1,3 +1,8 @@
+# 1. Population size is the number of individuals (routes) in one single generation and it's size is really important - too small size means the population will not be divergent enough and the genetic functions would not be effective, at the same time when the size is too big, the compute time is bigger The population size may change if you implement elitism and append better values 
+# 2. I stored my population in pandas.DataFrame - first column is my cities order and second is the route fitness - I stored the population because i nedded a 2-dimentional data structure that is easy to query and provides useful functions
+#3. 143 - It creates a placeholder for the child by creating a list with size of the route filled with empty values
+#         child = [None] * size
+
 import matplotlib.pyplot as plt
 import numpy as np
 import math
@@ -33,8 +38,6 @@ def calculate_fitness(coords:pandas.DataFrame,sol:list) -> float:
         total_distance += find_distance(city_a,city_b)
     return total_distance
 
-def fitness_info(fitness:float,sol:list):
-        print(f"Solution: {sol}\nScore: {fitness}")
 
 
 #Greedy algorithm (find the fastest route from start everytime) 
@@ -91,6 +94,7 @@ def initialise_population(coords: pandas.DataFrame,individuals:int,greedy_count:
         population.extend(random_data)
     
     population = pandas.DataFrame(population, columns=["Individual", "Fitness"])
+    print(population)
     return population
     
 # def population_data(p:pandas.DataFrame):
@@ -391,16 +395,16 @@ def plot_route(coords:pandas.DataFrame, solution:list):
     plt.show()
 
 if __name__ == "__main__":
-    file_path = "src/berlin52.tsp"
+    file_path = "src/berlin11_modified.tsp"
 
     best_params = {
         'population_size': 100,
-        'generations': 100,
+        'generations': 500,
         'mutation_rate': 0.02,
-        'greedy_count': 10,
+        'greedy_count': 15,
         'elitism_count': 2,
         'selection_type': 'tournament',
-        'tournament_size': 3,
+        'tournament_size': 5,
         'mutation_type': 'inversion'
     }
     print("Generating plot for the algorithm...")
