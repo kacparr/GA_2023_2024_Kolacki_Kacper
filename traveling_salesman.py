@@ -1,6 +1,6 @@
 # 1. Population size is the number of individuals (routes) in one single generation and it's size is really important - too small size means the population will not be divergent enough and the genetic functions would not be effective, at the same time when the size is too big, the compute time is bigger The population size may change if you implement elitism and append better values 
-# 2. I stored my population in pandas.DataFrame - first column is my cities order and second is the route fitness - I stored the population because i nedded a 2-dimentional data structure that is easy to query and provides useful functions
-#3. 143 - It creates a placeholder for the child by creating a list with size of the route filled with empty values
+# 2. I stored my population in pandas.DataFrame - first column is my cities order and second is the route fitness - I stored the population in this format because i nedded a 2-dimentional data structure that is easy to query and provides useful functions
+# 3. 143 - It creates a placeholder for the child by creating a list with size of the route filled with empty values
 #         child = [None] * size
 
 import matplotlib.pyplot as plt
